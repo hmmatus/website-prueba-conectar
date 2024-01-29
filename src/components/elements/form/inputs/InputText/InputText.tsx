@@ -5,7 +5,7 @@ type Props = {
   title: string;
   errorMessage?: string;
   type?: React.HTMLInputTypeAttribute;
-  value: string;
+  value: string | number;
   onChange(value: string): void;
   name: string;
 };

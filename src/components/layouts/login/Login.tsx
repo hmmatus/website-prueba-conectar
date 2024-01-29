@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import styles from "./Login.module.css";
+import React, { useState } from "react";
 import InputText from "@/components/elements/form/inputs/InputText/InputText";
 import MainButton from "@/components/elements/buttons/MainButton/MainButton";
 import Link from "next/link";
@@ -16,9 +15,7 @@ export default function LoginLayout() {
   }
 
   return (
-    <div
-      className={`flex w-100 flex-col items-center justify-center ${styles.container}`}
-    >
+    <div className={`flex w-100 flex-col items-center justify-center `}>
       <h1 className="text-xl">Login</h1>
       <InputText
         title="Email"
@@ -32,8 +29,10 @@ export default function LoginLayout() {
         value={data?.password}
         onChange={(value) => onChangeValue("password", value)}
       />
-      <Link className="text-focus" href="/register">Dont you have an account? Sign Up</Link>
-      <MainButton title="Login" className="m-2"/>
+      <Link className="text-focus" href="/register">
+        Dont you have an account? Sign Up
+      </Link>
+      <MainButton title="Login" className="m-2" />
     </div>
   );
 }
