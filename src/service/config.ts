@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestHeaders } from "axios";
 
 Axios.create({
-  baseURL: process.env.API_ENV,
+  baseURL: process.env.API_URL,
   timeout: 2000,
   headers: { "X-Custom-Header": "foobar" },
 });

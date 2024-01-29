@@ -1,5 +1,3 @@
-import { RegisterFormP } from "@/model/auth/register.model";
-
 const BASE_URL = '/user';
 
 const getAll = () => `${BASE_URL}/all`;
