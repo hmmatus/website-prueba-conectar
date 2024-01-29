@@ -1,14 +1,14 @@
 import Axios, { AxiosRequestHeaders } from "axios";
 
-Axios.create({
-  baseURL: process.env.API_URL,
-  timeout: 2000,
-  headers: { "X-Custom-Header": "foobar" },
+const axiosInstance = Axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout: 10000,
+  headers: { },
 });
 
 export const service = {
   get: async (url: string, headers?: AxiosRequestHeaders) => {
-    return await Axios.get(url, {
+    return await axiosInstance.get(url, {
       headers,
     })
       .then((response) => {
@@ -19,7 +19,7 @@ export const service = {
       });
   },
   post: async (url: string, data: any, headers?: AxiosRequestHeaders) => {
-    return await Axios.post(url, data, {
+    return await axiosInstance.post(url, data, {
       headers,
     })
       .then((response) => {

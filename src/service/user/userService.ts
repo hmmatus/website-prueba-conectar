@@ -4,10 +4,10 @@ import { userRoutes } from "./userRoutes";
 
 export const userService = {
   getAllUsers: () => {
-    service.get(userRoutes.getAll());
+    return service.get(userRoutes.getAll());
   },
   register: (data: RegisterFormP) => {
-    service.post(userRoutes.register(), data, {
+    return service.post(userRoutes.register(), data, {
       'content-type': 'multipart/form-data'
     })
   }
