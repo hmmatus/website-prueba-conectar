@@ -19,11 +19,7 @@ const InputFile = ({ title, errorMessage, value, onChange, name }: Props) => {
     
     if (files && files.length > 0) {
       setPreviewUrl(URL.createObjectURL(files[0]));
-      onChange({
-        name: files[0].name,
-        type: files[0].type,
-        size: files[0].size,
-      });
+      onChange(files[0]);
     }
   };
 
@@ -57,8 +53,8 @@ const InputFile = ({ title, errorMessage, value, onChange, name }: Props) => {
               >
                 <span>Upload a file</span>
                 <input
-                  id={name}
-                  name={name}
+                  id="file-upload"
+                  name="file-upload"
                   type="file"
                   className="sr-only"
                   onChange={onChangeValue}

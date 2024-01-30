@@ -186,10 +186,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
               title="Profile photo"
               name={field.name}
               value={field.value}
-              onChange={(value) => {
-                console.log("🚀 ~ RegisterLayout ~ value:", value)
-                field.onChange(value)
-              }}
+              onChange={(value) => field.onChange(value)}
               errorMessage={errors.image?.message}
             />
           )}
