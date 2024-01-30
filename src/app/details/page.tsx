@@ -5,14 +5,18 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 export default function Details() {
-  const searchParams = useSearchParams();
-  const user = JSON.parse(searchParams.get("details") || "");
-
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <ProtectedRoute>
-        <DetailsLayout details={user} />
+        <DetailsContent />
       </ProtectedRoute>
     </Suspense>
   );
+}
+
+function DetailsContent() {
+  const searchParams = useSearchParams();
+  const user = JSON.parse(searchParams.get("details") || "");
+
+  return <DetailsLayout details={user} />;
 }
