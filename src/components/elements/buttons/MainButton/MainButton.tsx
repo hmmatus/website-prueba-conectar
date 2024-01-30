@@ -9,7 +9,10 @@ interface Props
 }
 const MainButton = (props: Props) => {
   return (
-    <button {...props} className={`w-100 rounded-lg bg-primary p-4  text-white ${props.className}`}>
+    <button
+      {...props}
+      className={`text-lg text-bold rounded-lg bg-primary p-4  text-white ${props.className}`}
+    >
       {props.title}
     </button>
   );

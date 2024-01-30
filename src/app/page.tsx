@@ -13,7 +13,7 @@ export default function Page() {
     } else {
       router.push("/home");
     }
-  }, []);
+  }, [isLoggedIn, router]);
   return (
     <main>
 

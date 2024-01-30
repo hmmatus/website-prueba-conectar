@@ -25,12 +25,16 @@ export default function LoginLayout() {
   }
 
   return (
-    <div className={`flex w-100 flex-col items-center justify-center `}>
-      <h1 className="text-xl">Login</h1>
+    <div className={`w-full flex items-center justify-center`}>
+      <div className="w-80 flex flex-col items-center justify-center">
+      <h1 className="text-2xl text-bold my-2">Login</h1>
       <InputText
         title="Email"
         name="email"
         value={data?.email}
+        inputProps={{
+          className: "w-full"
+        }}
         onChange={(value) => onChangeValue("email", value)}
       />
       {/* <InputText
@@ -39,15 +43,16 @@ export default function LoginLayout() {
         value={data?.password}
         onChange={(value) => onChangeValue("password", value)}
       /> */}
-      <Link className="text-focus-primary" href="/register">
+      <Link className="text-focus-primary mb-4" href="/register">
         Dont you have an account? Sign Up
       </Link>
       <MainButton
         type="button"
         title="Login"
-        className="m-2"
+        className="w-full mx-2"
         onClick={handleLogin}
       />
+      </div>
     </div>
   );
 }

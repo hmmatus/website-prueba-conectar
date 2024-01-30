@@ -21,7 +21,7 @@ export default function Login() {
       router.replace('/login');
       return result;
     } catch (error) {
-      throw new Error(`${error}`);
+      toast.error(`${error}`);
     } finally {
       setLoading(false);
     }

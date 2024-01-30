@@ -28,7 +28,7 @@ const NavBar = () => {
           {isLoggedIn ? (
             <>
               <NavLink href="/home">Home</NavLink>
-              <button className="text-white" onClick={() => dispatch(logOut())}>Logout</button>
+              <button className="text-white text-lg" onClick={() => dispatch(logOut())}>Logout</button>
             </>
           ) : (
             <>
@@ -51,7 +51,7 @@ const NavBar = () => {
             {isLoggedIn ? (
               <>
                 <MobileNavLink href="/home">Home</MobileNavLink>
-                <button className="text-white" onClick={() => dispatch(logOut())}>Logout</button>
+                <button className="text-white text-lg" onClick={() => dispatch(logOut())}>Logout</button>
               </>
             ) : (
               <>

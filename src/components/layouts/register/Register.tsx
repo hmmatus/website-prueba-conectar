@@ -35,7 +35,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
 
   return (
     <div className={`flex w-100 flex-col items-center justify-center `}>
-      <h1> Sign Up</h1>
+      <h1 className="text-2xl text-bold my-4"> Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="name"
@@ -192,7 +192,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
           )}
         />
 
-        <MainButton className="mt-4" type="submit" title="Send" />
+        <MainButton className="w-full mt-4" type="submit" title="Send" />
       </form>
     </div>
   );
