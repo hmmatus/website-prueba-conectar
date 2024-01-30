@@ -33,11 +33,6 @@ const RegisterLayout = ({ onRegister }: Props) => {
     onRegister(data);
   };
 
-  useEffect(() => {
-    console.log("Form Errors:", errors);
-    console.log("Form control",);
-  }, [errors, control]);
-
   return (
     <div className={`flex w-100 flex-col items-center justify-center `}>
       <h1> Sign Up</h1>
