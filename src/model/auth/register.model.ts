@@ -14,5 +14,5 @@ export type RegisterFormP = {
   city: string;
   address: string;
   monthRevenue: number;
-  image: CustomFileObject;
+  image: any;
 };

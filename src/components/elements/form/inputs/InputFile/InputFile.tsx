@@ -6,12 +6,12 @@ import { CustomFileObject } from "@/model/auth/register.model";
 type Props = {
   title: string;
   errorMessage?: string;
-  value: CustomFileObject;
-  onChange(value?: CustomFileObject): void;
+  value: any;
+  onChange(value: any | null): void;
   name: string;
 };
 
-const InputFile = ({ title, errorMessage, value, onChange }: Props) => {
+const InputFile = ({ title, errorMessage, value, onChange, name }: Props) => {
   const [previewURL, setPreviewUrl] = useState<string | null>("");
 
   const onChangeValue = (e: React.FormEvent<HTMLInputElement>) => {
@@ -19,7 +19,11 @@ const InputFile = ({ title, errorMessage, value, onChange }: Props) => {
     
     if (files && files.length > 0) {
       setPreviewUrl(URL.createObjectURL(files[0]));
-      onChange(files[0]);
+      onChange({
+        name: files[0].name,
+        type: files[0].type,
+        size: files[0].size,
+      });
     }
   };
 
@@ -31,7 +35,7 @@ const InputFile = ({ title, errorMessage, value, onChange }: Props) => {
           <p
             className="text-lg font-bold hover:cursor-pointer"
             onClick={() => {
-              onChange();
+              onChange(null);
               setPreviewUrl(null);
             }}
           >
@@ -53,11 +57,12 @@ const InputFile = ({ title, errorMessage, value, onChange }: Props) => {
               >
                 <span>Upload a file</span>
                 <input
-                  id="file-upload"
-                  name="file-upload"
+                  id={name}
+                  name={name}
                   type="file"
                   className="sr-only"
                   onChange={onChangeValue}
+                  value={value}
                 />
               </label>
               <p className="pl-1">or drag and drop</p>

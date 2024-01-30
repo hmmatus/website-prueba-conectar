@@ -20,7 +20,7 @@ export const service = {
         throw new Error(`${error}`);
       });
   },
-  post: async (url: string, data: any, headers?: AxiosRequestHeaders) => {
+  post: async (url: string, data: any, headers?: any) => {
     return await axiosInstance.post(url, data, {
       headers,
     })
