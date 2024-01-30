@@ -24,7 +24,7 @@ const InputText = ({
     <InputWrapper title={title} errorMessage={errorMessage || ""}>
       <input
         name={name}
-        className={`w-100 border focus:border-focus rounded-md border-${errorMessage ? "error" : "slate-950"}`}
+        className={`w-100 border focus:border-blue rounded-md border-${errorMessage ? "error" : "slate-950"}`}
         type={type}
         value={value}
         onChange={onChangeValue}

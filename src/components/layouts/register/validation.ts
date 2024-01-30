@@ -1,3 +1,4 @@
+import { CustomFileObject } from "@/model/auth/register.model";
 import * as yup  from "yup";
 export const registerSchema = yup.object({
   name: yup.string().required(),
@@ -10,4 +11,14 @@ export const registerSchema = yup.object({
   city: yup.string().required(),
   address:yup.string().required(),
   monthRevenue: yup.number().required(),
+  image: yup.mixed()
+  .required('File is required')
+  .test('fileType', 'Invalid file type', (value) => {
+    const fileValue = value as CustomFileObject | undefined;
+        return fileValue && ['image/jpeg', 'image/png', 'image/gif'].includes(fileValue.type);
+  })
+  .test('fileSize', 'File size is too large', (value) => {
+    const fileValue = value as CustomFileObject | undefined;
+    return fileValue && fileValue.size <= 1024 * 1024; // 1MB
+  })
 });

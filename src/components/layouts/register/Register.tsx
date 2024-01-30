@@ -2,15 +2,24 @@
 import MainButton from "@/components/elements/buttons/MainButton/MainButton";
 import InputText from "@/components/elements/form/inputs/InputText/InputText";
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
 import { registerSchema } from "./validation";
 import { RegisterFormP } from "@/model/auth/register.model";
+import InputFile from "@/components/elements/form/inputs/InputFile/InputFile";
+import InputSelect from "@/components/elements/form/inputs/InputSelect/InputSelect";
 
 type Props = {
   onRegister(data: RegisterFormP): void;
   loading: boolean;
 };
+const selectOptions = [{
+  name: "Dui",
+  value: "dui"
+},{
+  name: "Passport",
+  value: "passport"
+}]
 const RegisterLayout = ({ onRegister }: Props) => {
   const {
     control,
@@ -20,7 +29,14 @@ const RegisterLayout = ({ onRegister }: Props) => {
     resolver: yupResolver(registerSchema),
   });
 
-  const onSubmit: SubmitHandler<RegisterFormP> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<RegisterFormP> = (data) => {
+    onRegister(data);
+  };
+
+  useEffect(() => {
+    console.log("Form Errors:", errors);
+    console.log("Form control",);
+  }, [errors, control]);
 
   return (
     <div className={`flex w-100 flex-col items-center justify-center `}>
@@ -33,7 +49,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="Name"
-              name="name"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.name?.message}
@@ -47,7 +63,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="Last Name"
-              name="lastName"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.lastName?.message}
@@ -61,14 +77,42 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="Email"
-              name="email"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.email?.message}
             />
           )}
         />
-
+        <Controller
+          name="phone"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <InputText
+              title="Phone Number"
+              name={field.name}
+              value={field.value}
+              onChange={(value) => field.onChange(value)}
+              errorMessage={errors.phone?.message}
+            />
+          )}
+        />
+        <Controller
+          name="idType"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <InputSelect
+              title="Identification type"
+              name={field.name}
+              value={field.value}
+              onChange={(value) => field.onChange(value)}
+              errorMessage={errors.idType?.message}
+              options={selectOptions}
+            />
+          )}
+        />
         <Controller
           name="idNumber"
           control={control}
@@ -90,7 +134,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="Department"
-              name="department"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.department?.message}
@@ -104,7 +148,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="City"
-              name="city"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.city?.message}
@@ -132,14 +176,31 @@ const RegisterLayout = ({ onRegister }: Props) => {
           render={({ field }) => (
             <InputText
               title="Month Income"
-              name="monthRevenue"
+              name={field.name}
               value={field.value}
               onChange={(value) => field.onChange(value)}
               errorMessage={errors.monthRevenue?.message}
             />
           )}
         />
-        <MainButton className="mt-4" type="submit" title="Send"/>
+        <Controller
+          name="image"
+          control={control}
+          render={({ field }) => (
+            <InputFile
+              title="Profile photo"
+              name={field.name}
+              value={field.value}
+              onChange={(value) => {
+                console.log("🚀 ~ RegisterLayout ~ value:", value)
+                field.onChange(value)
+              }}
+              errorMessage={errors.image?.message}
+            />
+          )}
+        />
+
+        <MainButton className="mt-4" type="submit" title="Send" />
       </form>
     </div>
   );

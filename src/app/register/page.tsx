@@ -6,10 +6,14 @@ import React, { useState } from "react";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
-  function register(data: RegisterFormP) {
+  async function register(data: RegisterFormP) {
     setLoading(true);
     try {
-      const result = userService.register(data);
+      const imageResult = await userService.uploadPicture(data.image);
+      const result = await userService.register({
+        ...data,
+        image: imageResult.url
+      });
       return result;
     } catch (error) {
       throw new Error(`${error}`);

@@ -1,6 +1,5 @@
 import { UserI } from "@/model/auth/user.model"
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { MouseEventHandler } from "react";
 
 type Props = {

@@ -1,3 +1,8 @@
+export interface CustomFileObject {
+  name: string;
+  type: string;
+  size: number;
+}
 export type RegisterFormP = {
   name: string;
   lastName: string;
@@ -9,4 +14,5 @@ export type RegisterFormP = {
   city: string;
   address: string;
   monthRevenue: number;
+  image: CustomFileObject | undefined;
 };
