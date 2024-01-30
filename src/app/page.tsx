@@ -1,14 +1,18 @@
 "use client"
-import Image from "next/image";
-import styles from "./page.module.css";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/redux/hooks";
 
-export default function Home() {
+export default function Page() {
   const router = useRouter();
+  const {isLoggedIn} = useAppSelector(state => state.auth);
 
   useEffect(() => {
-    router.push("/login");
+    if (isLoggedIn) {
+      router.push("/login");
+    } else {
+      router.push("/home");
+    }
   }, []);
   return (
     <main>
