@@ -10,7 +10,7 @@ export const registerSchema = yup.object({
   department: yup.string().required(),
   city: yup.string().required(),
   address:yup.string().required(),
-  monthRevenue: yup.number().required(),
+  monthRevenue: yup.number().min(1, 'Value must be greater than 0').required(),
   image: yup.mixed()
   .required('File is required')
   .test('fileType', 'Invalid file type', (value) => {
@@ -19,6 +19,6 @@ export const registerSchema = yup.object({
   })
   .test('fileSize', 'File size is too large', (value) => {
     const fileValue = value as CustomFileObject | undefined;
-    return fileValue && fileValue.size <= 1024 * 1024; // 1MB
+    return fileValue && fileValue.size <= 2000 * 2000;
   })
 });

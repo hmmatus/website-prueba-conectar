@@ -96,7 +96,7 @@ const RegisterLayout = ({ onRegister }: Props) => {
         <Controller
           name="idType"
           control={control}
-          defaultValue=""
+          defaultValue="dui"
           render={({ field }) => (
             <InputSelect
               title="Identification type"

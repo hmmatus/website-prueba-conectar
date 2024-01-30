@@ -26,7 +26,7 @@ const InputSelect = ({
   return (
     <InputWrapper title={title} errorMessage={errorMessage || ""}>
       <select
-        className={`w-100 border focus:border-blue rounded-md border-${
+        className={`w-100 h-8 border focus:border-blue rounded-md border-${
           errorMessage ? "error" : "slate-950"
         }`}
         name="select"

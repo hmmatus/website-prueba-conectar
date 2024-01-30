@@ -26,7 +26,7 @@ const InputFile = ({ title, errorMessage, value, onChange, name }: Props) => {
   if (previewURL) {
     return (
       <InputWrapper title={title} errorMessage={errorMessage || ""}>
-        <div className="flex flex-col items-center justify-center mt-2">
+        <div className="flex flex-col items-center justify-center mt-2 border border-dashed border-gray-900/25">
           <Image alt="Image url" width={100} height={200} src={previewURL} />
           <p
             className="text-lg font-bold hover:cursor-pointer"

@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { ChangeEventHandler, InputHTMLAttributes, useState } from "react";
 import InputWrapper from "../InputWrapper/InputWrapper";
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
   value: string | number;
   onChange(value: string): void;
   name: string;
+  inputProps?: InputHTMLAttributes<HTMLInputElement>;
 };
 const InputText = ({
   title,
@@ -16,6 +17,7 @@ const InputText = ({
   value,
   onChange,
   name,
+  inputProps
 }: Props) => {
   const onChangeValue = (e: React.FormEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
@@ -23,8 +25,9 @@ const InputText = ({
   return (
     <InputWrapper title={title} errorMessage={errorMessage || ""}>
       <input
+        {...inputProps}
         name={name}
-        className={`w-100 border focus:border-blue rounded-md border-${errorMessage ? "error" : "slate-950"}`}
+        className={`w-100 h-8 pl-2 border focus:border-blue rounded-md border-${errorMessage ? "error" : "slate-950"}`}
         type={type}
         value={value}
         onChange={onChangeValue}

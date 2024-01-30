@@ -8,9 +8,9 @@ type Props = {
 const InputWrapper = ({ title, children, errorMessage="" }: Props) => {
   return (
     <div className="flex flex-col w-100">
-      <label>{title}</label>
+      <label className="text-lg">{title}</label>
       {children}
-      {errorMessage && <p className="color-error">{errorMessage}</p>}
+      {errorMessage && <p className="text-error-primary">{errorMessage}</p>}
     </div>
   );
 };

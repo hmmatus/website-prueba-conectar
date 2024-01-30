@@ -8,8 +8,8 @@ module.exports = {
       current: "currentColor",
       white: "#ffffff",
       primary: "#9DC5E8",
-      error: "#dd2c00",
-      focus: "#2fa6ff"
+      'error-primary': "#dd2c00",
+      'focus-primary': "#2fa6ff"
     },
     extend: {
       fontFamily: {
