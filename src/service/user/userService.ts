@@ -7,8 +7,6 @@ export const userService = {
     return service.get(userRoutes.getAll());
   },
   register: (data: RegisterFormP) => {
-    return service.post(userRoutes.register(), data, {
-      'Content-Type': 'multipart/form-data'
-    })
+    return service.post(userRoutes.register(), data)
   }
 }
