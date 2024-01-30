@@ -1,5 +1,10 @@
+import ProtectedRoute from "@/components/elements/protected/ProtectedRoute/ProtectedRoute";
 import HomeLayout from "@/components/layouts/home/Home";
 
 export default function Home() {
-  return <HomeLayout />;
+  return (
+    <ProtectedRoute>
+      <HomeLayout />
+    </ProtectedRoute>
+  );
 }

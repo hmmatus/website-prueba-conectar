@@ -8,7 +8,7 @@ export const userService = {
   },
   register: (data: RegisterFormP) => {
     return service.post(userRoutes.register(), data, {
-      'content-type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data'
     })
   }
 }
